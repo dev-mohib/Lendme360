@@ -1,0 +1,179 @@
+* {
+    box-sizing: border-box;
+}
+body {
+/* 
+    font-family: 'Fira Sans'; */
+
+    /* font-family: 'Lato', sans-serif; */
+
+    /* font-family: 'Pontano Sans', sans-serif; */
+
+    font-family: 'Source Sans Pro', sans-serif;
+
+    /* border: solid red 2px; */
+    display: block;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    /* max-width: 1200px; */
+    margin-left: 100px;
+    margin-right: 100px;
+    margin: 0 auto;
+    padding-left: 220px;
+    padding-right: 220px;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.minApp{
+    background-color: slategrey;
+}
+.minApp > div,p{
+    /* background-color: rgb(47, 165, 43); */
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.refiLoanInfo {
+    
+    display:flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+    justify-content:right;
+    align-items:flex-start;
+}
+
+.refiLoanInfo label input{
+    margin-right: 120px;
+    margin-left: 120px;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    /* align-content: space-between ; */
+}
+
+input[type=text] {
+    width: 150px;
+    border-radius: 5px;
+}
+ul {
+    padding: 0;
+}
+
+.testme {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+.testme > li {
+    margin-bottom: 20px;
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: ; */
+}
+
+.CH1 {
+   display: block;
+   justify-content:right; 
+}
+
+
+
+.hlTitle > h1:nth-child(1), .tagLine > p:nth-child(1){
+    padding: 0;
+    margin: 0 0 5px;
+}
+
+.transType, .occupancies, .loanTerms {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.loanInfo {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.loanInfo > label input{
+margin-right: 20px;
+margin-bottom: 20px;
+}
+
+.applyingApplicants{
+    display: flex;
+    justify-content: left;
+    margin-bottom: 20px;
+}
+
+.applicants > h4:nth-child(1) {
+    margin: 0;
+}
+
+.incomeInfoB1 {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;  
+   
+}
+.incomeInfoB1 div input{
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+.retireIncome {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;   
+}
+
+
+.incomeInfoB2 {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;  
+   
+}
+.incomeInfoB2 div input{
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+.container {
+    /* width: 700px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+body > div.initalDocs > div {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.applyingApplicants > div:nth-child(2) > label:nth-child(2) {
+    margin-right: 10px;
+}
+
+
+
+h2 {
+    background-color: rgb(63, 65, 63);
+    color: white;
+}
+
+h3 {
+    background-color: rgb(133, 136, 133);
+    color: white;
+}
+
+h2,
+h3, h4 {
+    margin: 5px 0 5px 0;
+
+}
