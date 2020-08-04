@@ -1,390 +1,264 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
-        id="bootstrap-css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome | Home</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="css/navbar.css">
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous">
+    </script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous">
+    </script>
 </head>
+
 <body>
-      <nav class="navbar navbar-light bg-light static-top">
-    <div class="container">
-      <a class="navbar-brand" href="/">Logo</a>
-      <a class="btn btn-primary" href="/login">Sign In</a>
-    </div>
-  </nav>
-    <div class="container main-secction">
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12 image-section">
-                <img src="/img/background.jpg">
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Avatar</h3>
             </div>
-            <div class="row user-left-part">
-                <div class="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left">
-                    <div class="row ">
-                        <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
-                            <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png"
-                                class="rounded-circle">
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
-                            <button id="btn-contact" (click)="clearModal()" data-toggle="modal" data-target="#contact"
-                                class="btn btn-success btn-block follow">Edit Profile</button>
-                            <button class="btn btn-warning btn-block">Download Reports</button>
-                        </div>
-                        <div class="row user-detail-row">
-                            <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
-                                <div class="border"></div>
-                                <p>Reports Available</p>
-                                <span>10</span>
-                            </div>
-                        </div>
+            <ul class="list-unstyled components">
+                <p>User Name</p>
+                <li class="active">
+                    <a href="#homeSubmenu">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">View Reports</a>
+                </li>
+                <li>
+                    <a href="#">Generate Report</a>
+                </li>
+                <li>
+                    <a href="#">Edit Profile</a>
+                </li>
+                <li>
+                    <a href="#">About </a>
+                </li>
+            </ul>
 
-                    </div>
-                </div>
-                <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
-                    <div class="row profile-right-section-row">
-                        <div class="col-md-12 profile-header">
-                            <div class="row">
-                                <div class="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left">
-                                    <h1>John Doe</h1>
-                                    <h5>Premium</h5>
-                                </div>
-                                <div class="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right pull-rigth">
-                                    <a href="/search" class="btn btn-primary btn-block">Generate Report</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <ul class="nav nav-tabs" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" href="#profile" role="tab" data-toggle="tab"><i
-                                                    class="fas fa-user-circle"></i>  Profile</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#buzz" role="tab" data-toggle="tab"><i
-                                                    class="fas fa-info-circle"></i> Reports</a>
-                                        </li>
-                                    </ul>
-
-                                    <!-- Tab panes -->
-                                    <div class="tab-content">
-                                        <div role="tabpanel" class="tab-pane fade show active" id="profile">
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <label>Name</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>John Doe</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <label>Email</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>JuanPerez@example.com</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <label>City</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>Example</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <label>Contact Number</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>12345678</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <label>Current Plan</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>Premium User</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="buzz">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Experience</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>Expert</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Hourly Rate</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>10$/hr</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Total Projects</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>230</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>English Level</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>Expert</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Availability</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>6 months</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label>Your Bio</label>
-                                                    <br />
-                                                    <p>Your detail description</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                                <div class="col-md-4 img-main-rightPart">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="row image-right-part">
-                                                <div class="col-md-6 pull-left image-right-detail">
-                                                    <h6>PUBLICIDAD</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a href="http://camaradecomerciozn.com/">
-                                            <div class="col-md-12 image-right">
-                                                <img src="http://pluspng.com/img-png/bootstrap-png-bootstrap-512.png">
-                                            </div>
-                                        </a>
-                                        <div class="col-md-12 image-right-detail-section2">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="contact">Edit Profile</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="#" class="download">Generate Reports</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Page Content Holder -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    {{!-- <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button> --}}
+                    <a class="navbar-brand" href="/">LOGO</a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+                        <ul class="navbar-nav nav-items mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">About
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Career</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Partnership</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                        </ul>
+
+                        <ul class="navbar-nav navbar-right mr-auto ml-auto nav-flex-icons">
+                            <li class="nav-item">
+                                <a style="color: #fafafa;" onclick="handleLogout()" class="btn-login">LOGOUT <i class="fas fa-user"></i></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <p for="msj">Se enviará este mensaje a la persona que desea contactar, indicando que te quieres
-                            comunicar con el. Para esto debes de ingresar tu información personal.</p>
+            </nav>
+            {{!-- Body of the html page --}}
+            <!-- Masthead -->
+            <div class="jumbotron text-center hoverable p-4">
+                <div class="row">
+                    <div style="align-self: center;" class="col-md-7 text-md-left ml-3 mt-3">
+
+                        <h1 class="h1 mb-4">LOWEST RATE MORTGAGE</h1>
+
+                        <p class="font-weight-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Vestibulum sem dolor, egestas in porttitor non, ullamcorper eu eros. Suspendisse id quam
+                            nisi. Nulla sit amet. </p>
+                        {{!-- <p class="font-weight-normal">by <a><strong>Delroy Pearson</strong></a></p> --}}
+
+                        <a style="color: #fafafa;" class="btn btn-primary btn-lg read-more">Read more</a>
+
                     </div>
-                    <div class="form-group">
-                        <label for="txtFullname">Nombre completo</label>
-                        <input type="text" id="txtFullname" class="form-control">
+                    <div class="col-md-4 offset-md-1 mx-3 my-3">
+                        <!-- Featured image -->
+                        <div class="view overlay">
+                            <img src="img/jumbotron.png" class="img-fluid"
+                                alt="Sample image for first version of blog listing">
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
                     </div>
-                    <div class="form-group">
-                        <label for="txtEmail">Email</label>
-                        <input type="text" id="txtEmail" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtPhone">Teléfono</label>
-                        <input type="text" id="txtPhone" class="form-control">
-                    </div>
+                    <!-- Grid column -->
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" (click)="openModal()"
-                        data-dismiss="modal">Guardar</button>
-                </div>
+                <!-- Grid row -->
+
             </div>
         </div>
-    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+        </script>
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+        <script type="text/javascript">
+                        var firebaseConfig = {
+                    apiKey: "AIzaSyD5Oy9j8olWHZ5CfGISn4XSswsMLiQdISg",
+                    authDomain: "lendme360.firebaseapp.com",
+                    databaseURL: "https://lendme360.firebaseio.com",
+                    projectId: "lendme360",
+                    storageBucket: "lendme360.appspot.com",
+                    messagingSenderId: "1097345151286",
+                    appId: "1:1097345151286:web:2247592c3c16721114c397"
+                };
+
+                if (!firebase.apps.length)
+                    firebase.initializeApp(firebaseConfig)
+
+                var db = firebase.firestore();
+                var auth = firebase.auth();
+                var storage = firebase.storage();
+                auth.onAuthStateChanged(user => {
+                    if(!user) {
+                        console.log('There is no user logged in')
+                        window.location.href = "/";
+                    }
+                    else{
+                        console.log('User logged in as  '  + user.email)
+                        
+                    }
+                })
+            function handleLogout() {
+               auth.signOut()
+               .then(() => {
+                   console.log('Logout seccessfully')
+                    window.location.href = "/";
+               })
+            }
+
+        </script>
 </body>
 <style>
-    body {
-        margin-top: auto;
-        background-color: #f1f1f1;
-    }
-
-    .border {
-        border-bottom: 1px solid #F1F1F1;
-        margin-bottom: 10px;
-    }
-
-    .main-secction {
-        box-shadow: 10px 10px 10px;
-    }
-
-    .image-section {
-        padding: 0px;
-    }
-
-    .image-section img {
-        width: 100%;
-        height: 250px;
-        position: relative;
-    }
-
-    .user-image {
-        position: absolute;
-        margin-top: -50px;
-    }
-
-    .user-left-part {
-        margin: 0px;
-    }
-
-    .user-image img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .user-profil-part {
-        padding-bottom: 30px;
-        background-color: #FAFAFA;
-    }
-
-    .follow {
-        margin-top: 70px;
-    }
-
-    .user-detail-row {
-        margin: 0px;
-    }
-
-    .user-detail-section2 p {
-        font-size: 12px;
-        padding: 0px;
-        margin: 0px;
-    }
-
-    .user-detail-section2 {
-        margin-top: 10px;
-    }
-
-    .user-detail-section2 span {
-        color: #7CBBC3;
-        font-size: 20px;
-    }
-
-    .user-detail-section2 small {
-        font-size: 12px;
-        color: #D3A86A;
-    }
-
-    .profile-right-section {
-        padding: 20px 0px 10px 15px;
-        background-color: #FFFFFF;
-    }
-
-    .profile-right-section-row {
-        margin: 0px;
-    }
-
-    .profile-header-section1 h1 {
-        font-size: 25px;
-        margin: 0px;
-    }
-
-    .profile-header-section1 h5 {
-        color: #0062cc;
-    }
-
-    .req-btn {
-        height: 30px;
-        font-size: 12px;
-    }
-
-    .profile-tag {
+    .navbar {
         padding: 10px;
-        border: 1px solid #F6F6F6;
+        background-color: #fafafa;
     }
 
-    .profile-tag p {
-        font-size: 12px;
+    .nav-item .nav-link {
+        font-size: 18px;
+    }
+
+    .btn-login {
+        background-color: #000;
+        color: #fafafa;
+        font-weight: bolder;
+        border-radius: 0px;
+        padding: 5px 15px 5px 15px;
+        border: 0px;
+        margin: 0px 10px 0px 10px !important;
+        margin-top: 10px !important;
+
+    }
+
+    .btn-login:hover {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fafafa;
+    }
+
+    .search-icon {
+        color: #000;
+        margin-top: 0px;
+    }
+
+    .read-more {
+        padding: 10px 35px 10px 35px !important;
+    }
+
+    .nav-items {
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+    }
+
+    .nav-items li {
+        margin: 0px 15px 0px 15px;
+    }
+
+    .nav-items li a {
+        color: #000 !important;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .nav-items li a:hover {
+        background-color: rgba(167, 165, 165, 0.6);
+    }
+
+    .navbar-brand {
+        margin-left: 30px;
         color: black;
+        font-weight: bold;
+        font-size: 22px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
 
-    .profile-tag i {
-        color: #ADADAD;
-        font-size: 20px;
+    .navbar-right {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        display: flex !important;
+        justify-content: baseline !important;
     }
 
-    .image-right-part {
-        background-color: #FCFCFC;
-        margin: 0px;
-        padding: 5px;
+    .jumbotron {
+        background-color: #fafafa;
+        padding: 120px 20px 120px 20px !important;
     }
 
-    .img-main-rightPart {
-        background-color: #FCFCFC;
-        margin-top: auto;
-    }
-
-    .image-right-detail {
-        padding: 0px;
-    }
-
-    .image-right-detail p {
-        font-size: 12px;
-    }
-
-    .image-right-detail a:hover {
-        text-decoration: none;
-    }
-
-    .image-right img {
-        width: 100%;
-    }
-
-    .image-right-detail-section2 {
-        margin: 0px;
-    }
-
-    .image-right-detail-section2 p {
-        color: #38ACDF;
-        margin: 0px;
-    }
-
-    .image-right-detail-section2 span {
-        color: #7F7F7F;
-    }
-
-    .nav-link {
-        font-size: 1.2em;
+    .row {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
 </style>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </html>

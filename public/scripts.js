@@ -21,8 +21,13 @@ var firebaseConfig = {
 
     auth.signInWithEmailAndPassword(email, password)
     .then(user => {
-        console.log('Logged In successfully  ' + user.creds)
-        window.location.href = "/profile";
+        authcurrentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+          // Send token to your backend via HTTPS
+          window.location.href = "/auth?t=" + idToken + "&url=" + "profile";
+        }).catch(function(error) {
+          // Handle error
+        });
+       
     })
     .catch(err => {
         console.log('There was an Error Loggin in User ' + err)
@@ -62,7 +67,7 @@ function handleGoogleSignIn() {
         // This gives you a Google Access Token. You can use it to access the Google API.
         var token = result.credential.accessToken;
         var user = result.user;
-        // window.location.href = "/profile";
+        window.location.href = "/profile";
       }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -82,7 +87,7 @@ function handleFacebookSignIn() {
         var token = result.credential.accessToken;
         var user = result.user;
         console.log(user)
-        // window.location.href = "/profile";
+        window.location.href = "/profile";
         // ...
       }).catch(function(error) {
         // Handle Errors here.

@@ -24,10 +24,17 @@ app.get('/reports', (req, res) => {
 app.get('/purchase-report', (req, res) => {
   res.render('profile', {name : 'some-name'})
 })
-app.get('/nav', (req, res) => {
-  res.render('nav', {name : 'some-name'})
+app.get('/create-report', (req, res) => {
+  res.render('create-report', {name : 'some-name'})
 })
-
+app.get('/auth/:token/:url', (req, res) => {
+ let user = admin.auth().verifyIdToken(req.params.token)
+  .then(decodedToken => {
+    console.log(decodedToken)
+   return decodedToken.uid;
+  }).catch(error => false);
+res.redirect(`/${req.params.url}`)
+})
 
 
 
