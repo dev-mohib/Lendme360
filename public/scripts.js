@@ -1,51 +1,15 @@
-var firebaseConfig = {
-    apiKey: "AIzaSyD5Oy9j8olWHZ5CfGISn4XSswsMLiQdISg",
-    authDomain: "lendme360.firebaseapp.com",
-    databaseURL: "https://lendme360.firebaseio.com",
-    projectId: "lendme360",
-    storageBucket: "lendme360.appspot.com",
-    messagingSenderId: "1097345151286",
-    appId: "1:1097345151286:web:2247592c3c16721114c397"
-  };
-  
-  if (!firebase.apps.length)
-    firebase.initializeApp(firebaseConfig)
-
-  var db = firebase.firestore();
-  var auth = firebase.auth();
-  var storage = firebase.storage();
-  
-  function handleLogin() {
-    var email = $('#inputEmail').val()
-    var password = $('#inputPassword').val()
-
-    auth.signInWithEmailAndPassword(email, password)
-    .then(user => {
-        authcurrentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-          // Send token to your backend via HTTPS
-          window.location.href = "/auth?t=" + idToken + "&url=" + "profile";
-        }).catch(function(error) {
-          // Handle error
-        });
-       
-    })
-    .catch(err => {
-        console.log('There was an Error Loggin in User ' + err)
-    })
-}
-
 function handleSignup() {
-    var userName = $('#username').val()
+  var username = $('#username').val()
     var userEmail = $('#userEmail').val()
     var password = $('#userPassword').val()
     var repeatPassword = $('#repeatPassword').val()
-    console.log('usernamr => ' + username + "  " + userEmail + "  " + password + "   " + repeatPassword )
+    console.log('username => ' + username + "  " + userEmail + "  " + password + "   " + repeatPassword )
     if(username && userEmail && password && repeatPassword) {
         if(password !== repeatPassword) {window.alert("Password did  not match"); return}
     auth.createUserWithEmailAndPassword(userEmail, password)
     .then(user => {
         db.collection('users').doc(user.uid).set({
-          Name : userName,
+          Name : username,
           email : user.email,
           premiumUser : false
         })

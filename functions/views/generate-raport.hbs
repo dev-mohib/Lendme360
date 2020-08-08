@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home| Analyze Report</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+   
+    <link rel="stylesheet" href="../css/report-form.css">
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous">
+    </script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <div class="container" id="entireSite">
+        <form id="masterForm" action="#">
+            <!-- Name and Search -->
+            <div id="NameandSearch" class="d-flex justify-content-center">
+                <!-- <div><h2>The Mortgage Consultant</h2></div> -->
+                <div class="row col-lg-12 col-md-12  mb-4">
+                    <input type="text" class="form-control" placeholder="What address are you interested in?"
+                        id="inputPassword">
+                </div>
+            </div>
+            <!-- Transaction Cards -->
+            <div class="row" id="TransactionCards">
+                <img class="mb-3" style="width: 98%;" id="heropic" src="../img/iStockTest.png" alt="" srcset="">
+                <div class="col-lg-3 col-md-12 mb-4  col-12-sm">
+                    <div class="card">
+                        <img src="../img/1fff.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Transaction Type</h5>
+                            <p class="card-text">....</p>
+                            <div class="col ">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="TransactionType" id="Purchase"
+                                        value="Purchase" onclick="TransactionTypePurchase(); tenYts()" checked="true">
+                                    <label class="form-check-label" for="Purchase">
+                                        Purchase
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="TransactionType" id="Refinance"
+                                        value="Refinance" onclick="TransactionTypeRefinance()">
+                                    <label class="form-check-label" for="Refinance">
+                                        Refinance
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="TransactionType" id="Heloc"
+                                        value="Heloc" onclick="TransactionTypePurchase()">
+                                    <label class="form-check-label" for="Heloc">
+                                        Home Equity Line of Credit
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12 mb-4 col-12-sm">
+                    <div class="card">
+                        <div id="card_2_img">
+                            <img src="../img/1fff.jpg" class="card-img-top" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Property Type</h5>
+                            <p class="card-text">....</p>
+                            <form>
+                                <div id="Property_Type" class="col">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="PropertyType" id="sfr"
+                                            value="Single Family Home" checked="true">
+                                        <label class="form-check-label" for="sfr">
+                                            Single Family Home
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="PropertyType" id="twn"
+                                            value="Townhome">
+                                        <label class="form-check-label" for="twn">
+                                            Townhome
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="PropertyType" id="cond"
+                                            value="Condominium">
+                                        <label class="form-check-label" for="cond">
+                                            Condominium
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="PropertyType" id="mf"
+                                            value="Multi-Family" disabled>
+                                        <label class="form-check-label" for="exampleRadios4">
+                                            Multi-Family
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-12 mb-4 col-12-sm">
+                    <div class="card">
+                        <img src="../img/1fff.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Occupancy</h5>
+                            <p class="card-text">....</p>
+                            <div class="col ">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Occupancy" id="PrimaryHome"
+                                        value="Primary Home" checked="true">
+                                    <label class="form-check-label" for="PrimaryHome">
+                                        Primary Home
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Occupancy" id="VacationHome"
+                                        value="Vacation Home">
+                                    <label class="form-check-label" for="VacationHome">
+                                        Vacation Home
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Occupancy"
+                                        id="InvestmentProperty" value="Investment Property">
+                                    <label class="form-check-label" for="InvestmentProperty">
+                                        Investment Property
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-lg-3 col-md-12 mb-4 col-12-sm">
+                    <div class="card">
+                        <img src="../img/1fff.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Loan Terms</h5>
+                            <p class="card-text">...</p>
+                            <div class="col ">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="LoanTerms" id="_10Years"
+                                        value="10 Years">
+                                    <label class="form-check-label" for="_10Years">
+                                        10 Years <span></span>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="LoanTerms" id="_15Years"
+                                        value="15 Years">
+                                    <label class="form-check-label" for="_15Years">
+                                        15 Years <span></span>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="LoanTerms" id="_20Years"
+                                        value="20 Years">
+                                    <label class="form-check-label" for="_20Years">
+                                        20 Years <span></span>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="LoanTerms" id="_30Years"
+                                        value="30" checked="true">
+                                    <label class="form-check-label" for="_30Year">
+                                        30 Years <span></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Purchase 3 question-->
+
+            <div id="purchasePreQual">
+                <div class="container">
+                    <form>
+                        <div class="form-group row">
+                            <!--#1-->
+                            <!-- <label for="staticEmail" class="col-1 col-form-label">Purchase Price</label> -->
+
+                            <div class="col-lg-3 col-md-3 col-xs input-group mb-3 input-group-prepend">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control PurchasePrice" placeholder="Purchase Price"
+                                    id="PurchasePrice">
+                            </div>
+
+                            <!-- <label for="inputPassword" class="col-1 sm-1 col-form-label">Down Payment</label> -->
+                            <div class="col-lg-3 col-md-3 col-xs input-group mb-3 input-group-prepend">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control DownPayment" placeholder="Down Payment"
+                                    id="DownPayment">
+                            </div>
+
+                            <!-- 
+              <div class="col-lg-2 col-md-3 col-xs input-group mb-3 input-group-prepend">
+                <input type="range" class="custom-range" min="3%" max="80%" id="DownPaymentPercent">
+              </div> -->
+
+
+
+                            <!-- <label for="staticEmail" class="col-1 col-form-label">Loan Amount</label> -->
+                            <div class="col-lg-3 col-md-3 col-xs input-group mb-3 input-group-prepend">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Loan Amount" id="LoanAmount">
+                            </div>
+                            <!-- <label for="staticEmail" class="col-1 col-form-label">Loan Amount</label> -->
+
+
+
+
+                            <div class="col-lg-3 col-md-3 col-xs input-group mb-3 input-group-prepend">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Interest Rate" id="InterestRate"
+                                    required>
+                            </div>
+
+
+
+
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!--Refi and HELOC Questions-->
+            <div class="container" id="Refi">
+                <form>
+                    <!--#2-->
+                    <div class="form-group row">
+
+                        <div class="col-lg-3 col-md-3 col-xs input-group mb-3 input-group-prepend">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Original Purchase Price"
+                                id="OriginalPurchasePrice_refi">
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs input-group mb-3 input-group-prepend">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Home Value" id="HomeValue_refi">
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs input-group mb-3 input-group-prepend">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Mortgage Balance"
+                                id="MortgageBalance_refi">
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs input-group mb-3 input-group-prepend">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Mortgage Payment"
+                                id="MortgagePayment_refi">
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-3 col-xs input-group mb-3 input-group-prepend">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Interest Rate" id="InterestRate_refi">
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs input-group mb-3 input-group-prepend">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Property Taxes"
+                                id="PropertyTaxes_refi">
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs input-group mb-3 input-group-prepend">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Homeowners Insurance"
+                                id="HomeownersInsurance_refi">
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs input-group mb-3 input-group-prepend">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="HOA Dues" id="HOADues_refi">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+            <!--#6---Transaction Type-->
+            <div id="TransactionApplicant" class="container">
+                <div class="row justify-content-between">
+                    <div class="a col-lg-3">
+                        <p class="CurrentResidency">Applicant(s)<p>
+                                <div class=" row form-group">
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="Num_applicants"
+                                            id="SingleRadio" value="Single" onclick="TransactionApplicant()"
+                                            checked="true">
+                                        <label class="form-check-label" for="SingleRadio">Single</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="Num_applicants"
+                                            id="JointRadio" value="Joint" onclick="TransactionApplicantJoint()">
+                                        <label class="form-check-label" for="JointeRadio">Joint</label>
+                                    </div>
+
+                                    <!-- <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                                <label class="form-check-label" for="inlineRadio3">Other</label>
+                              </div> -->
+                                </div>
+                    </div>
+                    <div id='Current_Residency' class="z col-lg-3">
+                        <p class="CurrentResidency">Current Residency<p>
+                                <div class=" row form-group">
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="CurrentResidency" id="Own"
+                                            value="Own">
+                                        <label class="form-check-label" for="inlineRadio1">Own</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="CurrentResidency" id="Rent"
+                                            value="Rent">
+                                        <label class="form-check-label" for="inlineRadio2">Rent</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="CurrentResidency" id="Other"
+                                            value="Other" checked="true">
+                                        <label class="form-check-label" for="inlineRadio3">Other</label>
+                                    </div>
+                                </div>
+                    </div>
+                    <div class="z col-lg-3">
+                        <p class="CurrentResidency">Real Estate Own<p>
+                                <div class=" row form-group">
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="Real_Estate_Own" id="Plus_1"
+                                            value=0 checked="true">
+                                        <label class="form-check-label" for="Plus_1">None</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="Real_Estate_Own" id="Plus_2"
+                                            value=2>
+                                        <label class="form-check-label" for="Plus_2">+1</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="Real_Estate_Own" id="Plus_3"
+                                            value=3>
+                                        <label class="form-check-label" for="Plus_3">+2</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="Real_Estate_Own" id="Plus_3"
+                                            value=4>
+                                        <label class="form-check-label" for="Plus_3">+3</label>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--B1 Jod/Income-->
+            <div class="container" id="ApplicantEmployer">
+                <form class="needs-validation" novalidate>
+
+
+
+                    <div class="row form-group">
+                        <!--Applicant-Employer Jod info START-->
+                        <div class="col-lg-3 col-md-3 col-xs input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Applicant-Employer"
+                                id="Applicant-Employer">
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Job title" id="Applicant-Job-title">
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Time on Job" id="Time-on-Job">
+                        </div>
+                        <!--Applicant-Employer Jod info ENDS-->
+
+                        <!--Applicant-Employer Jod INCOME info START-->
+                        <div class="col-lg-3 col-md-3 col-sm-6 input-group mb-3 input-group-prepend">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Mthly. Income" id="ApplicantIncome"
+                                required>
+                            <div class="invalid-feedback">
+                                Please provide a valid state.
+                            </div>
+                        </div>
+
+
+
+                        <!--Applicant-Other Income START-->
+                        <div class="col-lg-4 col-md-6 col-xs mb-3 input-group input-group-prepend">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Other Income</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Other income source"
+                                id="applicant_other_income_type" onfocus="this.value=' ' ">
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 col-xs input-group mb-3 input-group-prepend">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Mthly. Income"
+                                id="applicant_other_income_type_amt" onfocus="this.value=' ' ">
+                        </div>
+
+                        <div class="col-lg-2 col-md-12 col-xs btn-group mb-3 input-group-prepend">
+                            <button onclick="addItem()" class="btn btn-primary btn-sm" type="button">Add Income</button>
+                        </div>
+
+                        <div class="col-lg-2 col-md-12 col-xs btn-group mb-3 input-group-prepend">
+                            <button onclick="removeItem()" class="btn btn-danger btn-sm" type="button">Remove
+                                Income</button>
+                        </div>
+
+
+                        <div>
+                            <ul id="dynamic-list"></ul>
+                            <p id="b1_otherIncome"></p>
+
+                        </div>
+
+
+                        <div class="row input-group">
+
+                            <div id="appAssetDIV" class="col-lg-6 col-md-6 col-xs mb-3 input-group input-group-prepend">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Total Assets" id="b1TotalAssets">
+                            </div>
+
+                            <div id="appLiabilitiesDIV" class="col-lg-6  mb-3  input-group input-group-prepend">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Total Mthly. Liabilities"
+                                    id="b1TotalMonthlyLiabilities">
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </form>
+            </div>
+
+
+
+
+
+
+
+            <!--B2 Jod/Income-->
+            <div class=" needs-validation container Co-Applicant-Employer" id="Co-Applicant-Employer">
+                <form class="needs-validation" novalidate>
+
+                    <div class="row form-group">
+
+                        <div class="col-lg-3 col-md-3 col-xs input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Co-Applicant-Employer"
+                                id="CoApplicantEmployer">
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Job title" id="CoApplicant-Job-title">
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Time on Job" id="CoTime-on-Job">
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 input-group mb-3 input-group-prepend">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Mthly. Income" id="CoApplicantIncome"
+                                required>
+                        </div>
+
+                        <!--CoApplicant-Other Income START-->
+                        <div class="col-lg-4 col-md-6 col-xs mb-3 input-group input-group-prepend">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Other income</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Other income1 source"
+                                id="coApplicant_other_income_type">
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 col-xs input-group mb-3 input-group-prepend">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Mthly. Income"
+                                id="coApplicant_other_income_type_amt">
+                        </div>
+
+                        <div class="col-lg-2 col-md-12 col-xs btn-group mb-3 input-group-prepend">
+                            <button onclick="addItem2()" class="btn btn-primary btn-sm" type="button">Add
+                                Income</button>
+                        </div>
+
+                        <div class="col-lg-2 col-md-12 col-xs btn-group mb-3 input-group-prepend">
+                            <button onclick="removeItem2()" class="btn btn-danger btn-sm" type="button">Remove
+                                Income</button>
+                        </div>
+
+                        <div>
+                            <ul id="dynamic-list2"></ul>
+                            <p id="b2_otherIncome"></p>
+                        </div>
+
+                        <div class="row input-group">
+
+                            <div id="coappAssetDIV"
+                                class="col-lg-6 col-md-6 col-xs mb-3 input-group input-group-prepend">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Total Assets" id="CoTotalAssets">
+                            </div>
+
+                            <div id="coappLiabilitiesDIV"
+                                class="col-lg-6 col-md-6 col-xs mb-3  input-group input-group-prepend">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Total Mthly. Liabilities"
+                                    id="CoTotalMonthlyLiabilities">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+
+
+
+            <!-- <input id='btn1' type="button" value="J-test" onclick="addOtherIncome();"> -->
+
+            <!-- Analyze---BUTTON Start-->
+            <!-- <input id='btn' class='btn-outline-danger' type="button" value="FORM TO JSON"> -->
+            <button id="reportGen" type="submit" class="btn btn-primary btn-sm btn-block mb-3"
+                onclick="tenYts(); validate(); B2_OtherIncome(); B1_OtherIncome(); getPDF();">Analyze</button>
+        </form>
+        <!-- Analyze---BUTTON  End-->
+
+
+
+
+
+        <!-- Breakdown Table START-->
+        <div id='breakdown' class="row row-cols-1 row-cols-sm-2 row-cols-md-4 ">
+
+            <!-- Home Loan Data CARD Start -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+                <div class="card mb-3">
+                    <img id='Home_Loan_Data_Image' class="card-img-top" src="../img/1fff.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Home Loan Data</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                    </div>
+
+                    <!-- ******************************PURCHASE TABLE**************************** -->
+                    <table id="purchase" class="table-hover table-bordered">
+                        <tbody class="tablel">
+                            <tr>
+                                <th class=" text-center" colspan="2">Home Loan Data <span>Purchase</span></th>
+                            </tr>
+                            <tr>
+                                <td>Purchase Price</td>
+                                <td><span></span><span id="TPurchasePrice"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Down Payment</td>
+                                <td><span></span><span id="TDownPayment"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Loan Amount</td>
+                                <td><span></span><span id="TLoanAmount"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Term (Months)</td>
+                                <td id="TermYears"></td>
+                            </tr>
+                            <tr>
+                                <td>Interest Rate</td>
+                                <td><span id='TInterestRate'></span><span>%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Mthly. Principle &amp; Interest</td>
+                                <td id="TPrinciple&Interest"></td>
+                            </tr>
+                            <tr>
+                                <td>Mthly. Property Tax</td>
+                                <td id="PropertyTx"><span></span><span></span></td>
+                            </tr>
+                            <tr>
+                                <td>Mthly. Homeowners Insur.</td>
+                                <td id="HOI_Dues"><span></span><span></span></td>
+                            </tr>
+                            <tr>
+                                <td>Mthly. Homeowners Ass.</td>
+                                <td id="HOA_dues"><span></span><span></span></td>
+                            </tr>
+                            <tr>
+                                <td>Mthly. P.T.I.A</td>
+                                <td id="purchasePITIA"><span></span><span></span></td>
+                            </tr>
+                            <tr>
+                                <td>Total Interest</td>
+                                <td><span></span><span id="totalIntPaid"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Total Payments</td>
+                                <td><span></span><span id="totalNumPmt"></span></td>
+                            </tr>
+                            <tr>
+                                <td>LTV (Loan To Value)</td>
+                                <td id=""><span></span><span></span></td>
+                            </tr>
+                            <tr>
+                                <td>?</td>
+                                <td id=""><span></span><span></span></td>
+                            </tr>
+                            <tr>
+                                <td>?</td>
+                                <td id=""><span></span><span></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- ******************************REFI TABLE**************************** -->
+
+                    <table id="refinance" class="table table-bordered">
+                        <tbody class="table-sm">
+                            <tr>
+                                <th class="text-center" colspan="2">Home Loan Data <span>Refinance</span></th>
+                            </tr>
+                            <tr>
+                                <td>Original Purchase Price</td>
+                                <td><span></span><span id=""></span></td>
+                            </tr>
+                            <tr>
+                                <td>Home Value</td>
+                                <td><span></span><span id=""></span></td>
+                            </tr>
+                            <tr>
+                                <td>Mortgage Balance</td>
+                                <td><span></span><span id=""></span></td>
+                            </tr>
+                            <tr>
+                                <td>Mortgage Payment</td>
+                                <td id=""></td>
+                            </tr>
+                            <tr>
+                                <td>Current Interest Rate</td>
+                                <td><span id=''></span><span>%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Property Taxes</td>
+                                <td id=""></td>
+                            </tr>
+                            <tr>
+                                <td>Mthly. Homeowners Insur.</td>
+                                <td id=""><span></span><span></span></td>
+                            </tr>
+                            <tr>
+                                <td>Mthly. Homeowners Ass.</td>
+                                <td id=""><span></span><span></span></td>
+                            </tr>
+                            <tr>
+                                <td>Mthly. P.T.I.A</td>
+                                <td id=""><span></span><span></span></td>
+                            </tr>
+                            <tr>
+                                <td>?</td>
+                                <td id=""><span></span><span></span></td>
+                            </tr>
+                            <tr>
+                                <td>?</td>
+                                <td><span></span><span id=""></span></td>
+                            </tr>
+                            <tr>
+                                <td>?</td>
+                                <td><span></span><span id=""></span></td>
+                            </tr>
+                            <tr>
+                                <td>?)</td>
+                                <td id=""><span></span><span></span></td>
+                            </tr>
+                            <tr>
+                                <td>?</td>
+                                <td id=""><span></span><span></span></td>
+                            </tr>
+                            <tr>
+                                <td>?</td>
+                                <td id=""><span></span><span></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Home Loan Data CARD Ends-->
+
+            <!-- Current Financial Snapshot Start-->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card mb-3">
+                    <img class="card-img-top" src="../img/1fff.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Financial Snapshot</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                    </div>
+                    <table class="table table-bordered">
+                        <tbody class="table-sm">
+                            <tr>
+                                <th class="text-center" colspan="2">Current Financial Snapshot</th>
+                            </tr>
+                            <tr>
+                                <td class="text-center" colspan="2">Income</td>
+                            </tr>
+                            <tr>
+                                <td>Applicant Total Income</td>
+                                <td id="AppIncome">$</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">2</td>
+                                <!-- <td>$</td> -->
+                            </tr>
+                            <tr>
+                                <td>Co-Applicant Income</td>
+                                <td id="coAppIncome">$</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">4</td>
+                                <!-- <td >$</td> -->
+                            </tr>
+                            <tr>
+                                <td class="text-center" colspan="2">Assets</td>
+                            </tr>
+                            <tr>
+                                <td>Applicant Assets</td>
+                                <td id="AppTotalAssets">$</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">?</td>
+                                <!-- <td ">$</td> -->
+                            </tr>
+                            <tr>
+                                <td>Co-Applicant Assets</td>
+                                <td id="CoAppTotalAssets"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">?</td>
+                                <!-- <td ">$</td> -->
+                            </tr>
+                            <tr>
+                                <td class="text-center" colspan="2">Liabilities</td>
+                            </tr>
+                            <tr>
+                                <td>Applicant Liabilities</td>
+                                <td id="AppTotalLiabilities"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">?</td>
+                                <!-- <td ">$</td> -->
+                            </tr>
+                            <tr>
+                                <td>Co-Applicant Liabilities</td>
+                                <td id="CoAppTotalLiabilities"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">?</td>
+                                <!-- <td>$</td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Current Financial Snapshot Ends -->
+
+            <!-- Analysis Summary CARD Start -->
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="card mb-3">
+                    <img class="card-img-top" src="../img/1fff.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Analysis Summary</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                    </div>
+                    <table class="table table-bordered">
+                        <tbody class="table-sm">
+                            <tr>
+                                <th class=" text-center" colspan=" 2" scope="row">Analysis Summary</th>
+                            </tr>
+                            <tr>
+                                <td>Total Income</td>
+                                <td id="grandTotalincome">$</td>
+                            </tr>
+                            <tr>
+                                <td>Total Liabilities</td>
+                                <td id="grandTotalLiabilities"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" colspan="2">Current Debt to Income Ratio</td>
+                            </tr>
+                            <tr>
+                                <td class=" text-center" id="currentRatio" colspan="2">%</td>
+                            </tr>
+                            <tr>
+                                <td>Total Income</td>
+                                <td id="grandTotalincomeRatio"></td>
+                            </tr>
+                            <tr>
+                                <td>Total Liabilities</td>
+                                <td id="grandTotalLiabilitiesRatio"></td>
+                            </tr>
+                            <tr>
+                                <td>P.T.I.A <span>+</span>Total Liabilities</td>
+                                <td id="grandTotal_PITIA_Ratio"> $</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" colspan="2">Projected Debt to Income Ratio</td>
+                            </tr>
+                            <tr>
+                                <td class=" text-center" id="pDTI" colspan=" 2">%</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" colspan="2">Credit Score</td>
+                            </tr>
+                            <tr>
+                                <td>Equifax</td>
+                                <td id="Eqfax_fico">000</td>
+                            </tr>
+                            <tr>
+                                <td>Transunion</td>
+                                <td id="TransU_fico">000</td>
+                            </tr>
+                            <tr>
+                                <td>Experian</td>
+                                <td id="Expri_fico">000</td>
+                            </tr>
+                            <tr>
+                                <td>Middle Score</td>
+                                <td id="mid_fico">000</td>
+                            </tr>
+                            <tr>
+                                <td id="">?</td>
+                                <td><span></span><span></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Analysis Summary CARD Ends -->
+        </div>
+        <!-- Breakdown Table END-->
+
+
+
+
+
+        <!-- See more---BUTTON -->
+        <input type="button" id='submit' value="See more details...." class="input btn btn-primary btn-lg" />
+
+        <!-- Loan Amortization Canvas START-->
+        <canvas id="myChart"></canvas>
+        <!-- <canvas id="myChart2"></canvas> -->
+        <!-- Loan Amortization Canvas ENDS-->
+
+        <div id="T4506T_Condition">
+            <div id="result2"></div>
+            <ul id="items"></ul>
+        </div>
+
+        <div id="SSA_Condition">
+            <div id="result3"></div>
+            <ul id="items2"></ul>
+        </div>
+
+        <div id="BorrowerCerti_Condition">
+            <div id="result4"></div>
+            <ul id="items3"></ul>
+        </div>
+
+
+
+
+
+
+        <!-- Loan Amortization Table START-->
+        <div id="container">
+            <div class="jumbotron">
+                <h1 class="display-4">Amortization Table</h1>
+                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
+                    attention to featured content or information.</p>
+                <hr class="my-4">
+                <p>It uses utility classes for typography and spacing to space content out within the larger container.
+                </p>
+
+                <!-- loan form will be here -->
+                <div class="row">
+
+
+                    <div class="col">
+                        <div id="loan_src">
+                            <form name="loan_form">
+                                <table style="margin:20px;">
+                                    <div class="input-group">
+                                        <tr>
+                                            <td>Loan Amount:</td>
+                                            <td><input type="text" id='loan_amt' name="loan_amt"
+                                                    class="inputs form-control" /></td>
+                                        </tr>
+                                    </div>
+
+                                    <tr>
+                                        <td>Number of Months:</td>
+                                        <td><input type="text" id='months' name="months" size="10"
+                                                class="inputs form-control" /></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Annual Interest Rate: <br /><span style="font-size:80%">(ex. 4.5% =
+                                                4.5)</span></td>
+                                        <td><input type="text" id="rate" name="rate" size="10"
+                                                class="inputs form-control" /></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Extra Monthly Payment:</td>
+                                        <td><input type="text" id='extra' name="extra" size="10" value="0"
+                                                class="inputs form-control" /></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><input type="button" id='submit' onclick="validate()" value="Calculate"
+                                                class="input btn btn-primary btn-sm" /></td>
+                                        <!-- <td><input type="button" id='reset' onclick="startOver()" value="Start Over" class="input" /></td> -->
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
+                    <!-- <input type="button" id='submit' onclick="validate()" value="Calculate" class="input btn btn-primary btn-lg" /> -->
+
+
+                    <div class="col">
+                        <div id="loan_info">
+                            <div id="dialog" title="Basic dialog">
+                                <p id='amt'></p>
+                                <p id='numMonths'></p>
+                                <p id='interestRate'></p>
+                                <p id='extraPayment'></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <!-- loan info will be START here -->
+
+
+            <div id="table_header  text-center">
+                <table class="table  text-center">
+                    <thead class="thead-light text-center">
+                        <tr class="text-center">
+                            <th>No.</th>
+                            <th>Payment Date</th>
+                            <th>Payment</th>
+                            <th>Principal</td>
+                            <th>Interest</td>
+                            <th>Interest Paid</td>
+                            <th>Balance</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div id="table" class="table_info"></div>
+        </div>
+        <!-- Loan Amortization Table END-->
+        <input id='TEST_btn' type="button" value="GET Your Report" onclick="storeLoandata();ProposalGen()">
+        <div id="result">...</div>
+
+        <div id="appDataJson"></div>
+
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<!-- Popper.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+    integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+</script>
+<script src="../scripts/report.js" ></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+    integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+  <script src="html2canvas.min.js"></script>
+  <script src="jsPDF.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+            $(this).toggleClass('active');
+        });
+    });
+</script>
+
+</html>

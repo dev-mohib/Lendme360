@@ -25,10 +25,10 @@
         <!-- Sidebar Holder -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Avatar</h3>
+               <img src="img/profile.png" alt="Avatar" class="avatar">
             </div>
             <ul class="list-unstyled components">
-                <p>User Name</p>
+                <p>{{user.email}}</p>
                 <li class="active">
                     <a href="#homeSubmenu">Dashboard</a>
                 </li>
@@ -48,24 +48,21 @@
 
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a href="#" class="download">Generate Reports</a>
+                    <a href="#" class="download">Generate Report</a>
+                </li>
+                <li>
+                    <a href="/buy" class="download">View Reports</a>
                 </li>
             </ul>
+            <div class="user-plan">
+                <div><h5>Current Plan</h5><b>Free</b></div>
+                <button class="btn-plan">Upgrade</button>
+            </div>
         </nav>
         <!-- Page Content Holder -->
         <div id="content">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    {{!-- <button type="button" id="sidebarCollapse" class="navbar-btn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button> --}}
                     <a class="navbar-brand" href="/">LOGO</a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
                         <ul class="navbar-nav nav-items mr-auto">
@@ -90,7 +87,16 @@
 
                         <ul class="navbar-nav navbar-right mr-auto ml-auto nav-flex-icons">
                             <li class="nav-item">
-                                <a style="color: #fafafa;" onclick="handleLogout()" class="btn-login">LOGOUT <i class="fas fa-user"></i></a>
+                                <div class="dropdown">
+                                    <a class="btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-ellipsis-v fa-2x"></i>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Billings</a>
+                                        <a class="dropdown-item" href="#">Statistics</a>
+                                        <a class="dropdown-item" href="#">Logout</a>
+                                    </div>
+</div>
                             </li>
                         </ul>
                     </div>
@@ -128,21 +134,20 @@
                 <!-- Grid row -->
 
             </div>
+        <div>
         </div>
 
-        <!-- jQuery CDN - Slim version (=without AJAX) -->
-
+        </div>
         <!-- Bootstrap JS -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
-        </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
         <script type="text/javascript">
-                        var firebaseConfig = {
+                var firebaseConfig = {
                     apiKey: "AIzaSyD5Oy9j8olWHZ5CfGISn4XSswsMLiQdISg",
                     authDomain: "lendme360.firebaseapp.com",
                     databaseURL: "https://lendme360.firebaseio.com",
@@ -168,7 +173,7 @@
                         
                     }
                 })
-            function handleLogout() {
+    function handleLogout() {
                auth.signOut()
                .then(() => {
                    console.log('Logout seccessfully')
@@ -258,6 +263,25 @@
         flex-direction: row !important;
         justify-content: center !important;
         align-items: center !important;
+    }
+    .user-plan {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        margin: 8px;
+    }
+    .btn-plan {
+        padding: 15px 10px;
+        font-weight: bold;
+        border-radius: 8px;
+        color: #fafafa;
+        font-size: 17px;
+        border-width: 0px;
+        border-radius: 10px;
+        background-color: #6778be;
+    }
+    .btn-plan:hover{
+        background-color: #3b477c;
     }
 </style>
 
