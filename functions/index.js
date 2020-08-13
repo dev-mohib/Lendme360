@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser')
 const admin = require('firebase-admin')
 admin.initializeApp()
 const env = {
-  DOMAIN : "http://localhost:5000",
+  DOMAIN : "https://lendme360.web.app", //"http://localhost:5000",
   PAYMENT_METHODS : "card",
   PRICE : "price_1HDSASGjRUMSznxqLjk6ppSx",
   STRIPE_PUBLISHABLE_KEY : "pk_test_51HCiNYGjRUMSznxq6yy0k9tjJX1q0M0X8uEbXmZwxlmLLJaUyJZUUx0M0uilfkDpMGrhH2JgljS6xtE2aFpX6aHW00TFkVtYPv",
@@ -13,7 +13,7 @@ const env = {
   STRIPE_WEBHOOK_SECRET : "whsec_BI9pqVkN74mgbvgbGzxKKvZjE8RFbmtr"
 }
 const stripe = require('stripe')(env.STRIPE_SECRET_KEY);
-
+const db = admin.firestore()
 const app = express()
 app.engine('hbs', engines.handlebars)
 app.set('views', './views')
