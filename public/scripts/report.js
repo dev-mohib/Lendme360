@@ -541,7 +541,7 @@
         pdf.addPage(PDF_Width, PDF_Height);
         pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height);
       }
-      // pdf.save("HTML-Document.pdf");
+      pdf.save("HTML-Document.pdf");
   
      });
   

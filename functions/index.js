@@ -19,7 +19,7 @@ app.engine('hbs', engines.handlebars)
 app.set('views', './views')
 app.use(cookieParser())
 app.set('view engine', 'hbs')
-const db = admin.database()
+
 app.use(
   express.json({
     // We need the raw body to verify webhook signatures.
@@ -36,23 +36,42 @@ app.get('/', (req, res) => {
   res.render('index', {name : 'some-name'})
 })
 app.get('/login', (req, res) => {
-  res.render('login', {name : 'some-name'})
+  res.render('login', {pageData : 'some-data'})
 })
 
 //Profile Route
 app.get('/profile', async (req, res) => {
-  let cookie = await getUserFromCookie(req)
-  if(!cookie.isFound)
-  res.redirect('/login')
-
-  res.render('profile', {user : cookie.user, pageData : "Some Information"})
+  res.render('profile', { pageData : "some data"})
 })
 
-app.get('/reports/generate', (req, res) => {
-  res.render('generate-raport', {name : 'some-name'})
+app.get('/view-reports', async (req, res) => {
+  // if(!req.cookies.idToken)
+  // res.redirect('/login')
+  // if(!decodedToken)
+  // res.redirect('/login')
+  // const decodedToken = await admin.auth().verifyIdToken(req.cookies.idToken)
+  res.render('view-reports', { pageData : "some data"})
+})
+
+
+app.get('/reports/generate', async (req, res) => {
+  res.render('generate-raport', { pageData : "some data"})
+})
+app.get('/about', async (req, res) => {
+  res.render('about')
 })
 app.get('/reports/view', (req, res) => {
-  res.render('create-report', {name : 'some-name'})
+  res.render('view-reports', {name : 'some-name'})
+})
+app.get('/signup', (req, res) => {
+  res.render('signup')
+})
+// app.get('/profile/edit', (req, res) => {
+//   res.render('edit-profile', {name : 'some-name'})
+// })
+
+app.get('/edit-profile', async (req, res) => {
+  res.render('edit-profile', { pageData : "some data"})
 })
 
 
@@ -102,7 +121,6 @@ app.post('/create-checkout-session', async (req, res) => {
     success_url: `${domainURL}/success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${domainURL}/canceled`,
   });
-
   res.send({
     sessionId: session.id,
   });

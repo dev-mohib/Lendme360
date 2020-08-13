@@ -21,108 +21,6 @@ var firebaseConfig = {
 
 }
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   var forms = document.getElementsByClassName('needs-validation');
   // Loop over them and prevent submission
@@ -253,11 +151,7 @@ var firebaseConfig = {
       coAppIncomeRequired.required = true;
     } else {
       Refi.style.display = "none";
-  
-      // console.log('B2 NOT WORKING');
-  
       // coAppIncomeRequired.removeAttribute("id");
-  
     }
   
     // Table input Functions
@@ -645,7 +539,7 @@ var firebaseConfig = {
   
   
   function getPDF() {
-  
+
     var HTML_Width = $("#entireSite").width();
     var HTML_Height = $("#entireSite").height();
     var top_left_margin = 15;
@@ -680,8 +574,8 @@ var firebaseConfig = {
       console.log("PDF file generated")
       firebase.auth().onAuthStateChanged(user => {
         if(user) {
-          console.log("Uploading file for " + user.email)
-          var storage = firebase.storage().ref('PDF_Files/' + user.email + "/" + date.toString())
+          console.log("Uploading file for " + user.uid)
+          var storage = firebase.storage().ref('user-reports/' + user.uid + "/" + date.toString())
           var process = storage.put(blob)
           process.on('state_changed',
             function progress(snapshot) {

@@ -4,59 +4,76 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/login.css">
     <title>Home Loan | Login</title>
 </head>
+
 <body>
     <div id="logreg-forms">
         <div class="form-signin">
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
             <div class="social-login">
-                <button onclick="handleFacebookSignIn()" class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span> </button>
-                <button onclick="handleGoogleSignIn()" class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign in with Google</span> </button>
+                <button onclick="handleFacebookSignIn()" class="btn facebook-btn social-btn" type="button"><span><i
+                            class="fab fa-facebook-f"></i> Sign in with Facebook</span> </button>
+                <button onclick="handleGoogleSignIn()" class="btn google-btn social-btn" type="button"><span><i
+                            class="fab fa-google-plus-g"></i> Sign in with Google</span> </button>
             </div>
-            <p style="text-align:center"> OR  </p>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+            <p style="text-align:center"> OR </p>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required=""
+                autofocus="">
             <input type="password" id="inputPassword" class="form-control" placeholder="Password address" required="">
-            
-            <button class="btn btn-success btn-block" onclick="handleLogin()" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+
+            <button class="btn btn-success btn-block" id="loginBtn" onclick="handleLogin()" type="submit"><i
+                    class="fas fa-sign-in-alt"></i> Sign in</button>
             <a href="#" id="forgot_pswd">Forgot password?</a>
             <hr>
             <!-- <p>Don't have an account!</p>  -->
-            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up New Account</button>
-            </div>
+            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i>
+                Sign up New Account</button>
+        </div>
 
-            <form action="/reset-password" class="form-reset">
-                <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-                <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
-                <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
-            </form>
-            
-            <div class="form-signup">
-               <h1 style="padding: 20px;">Signup</h1>
-               <input style="margin-top: 10px;" type="username" id="username" class="form-control" placeholder="Your Name" required="" autofocus="">
-                <input style="margin-top: 10px;" type="email" id="userEmail" class="form-control" placeholder="Email address" required="">
-                <input style="margin-top: 10px;" type="password" id="userPassword" class="form-control" placeholder="Password" required="" >
-                <input style="margin-top: 10px;" type="password" id="repeatPassword" class="form-control" placeholder="Repeat Password" required="">
+        <form action="/reset-password" class="form-reset">
+            <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required=""
+                autofocus="">
+            <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
+            <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
+        </form>
 
-                <button onclick="handleSignup()" class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
-                <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Back</a>
-            </div>
-            <br>
-            
+        <div class="form-signup">
+            <h1 style="padding: 20px;">Signup</h1>
+            <input style="margin-top: 10px;" type="username" id="username" class="form-control" placeholder="Your Name"
+                required="" autofocus="">
+            <input style="margin-top: 10px;" type="email" id="userEmail" class="form-control"
+                placeholder="Email address" required="">
+            <input style="margin-top: 10px;" type="password" id="userPassword" class="form-control"
+                placeholder="Password" required="">
+            <input style="margin-top: 10px;" type="password" id="repeatPassword" class="form-control"
+                placeholder="Repeat Password" required="">
+
+            <button onclick="handleSignup()" class="btn btn-primary btn-block" type="submit"><i
+                    class="fas fa-user-plus"></i> Sign Up</button>
+            <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Back</a>
+        </div>
+        <br>
+
     </div>
     <p style="text-align:center">
         <a href="/">Home Check list</a>
     </p>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
@@ -66,140 +83,165 @@
     {{!-- <script src="scripts.js"></script> --}}
 </body>
 <script>
+    function toggleResetPswd(e) {
+        e.preventDefault();
+        $('#logreg-forms .form-signin').toggle() // display:block or none
+        $('#logreg-forms .form-reset').toggle() // display:block or none
+    }
+
+    function toggleSignUp(e) {
+        e.preventDefault();
+        $('#logreg-forms .form-signin').toggle(); // display:block or none
+        $('#logreg-forms .form-signup').toggle(); // display:block or none
+    }
+
+    $(() => {
+        // Login Register Form
+        $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
+        $('#logreg-forms #cancel_reset').click(toggleResetPswd);
+        $('#logreg-forms #btn-signup').click(toggleSignUp);
+        $('#logreg-forms #cancel_signup').click(toggleSignUp);
+    })
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyD5Oy9j8olWHZ5CfGISn4XSswsMLiQdISg",
+        authDomain: "lendme360.firebaseapp.com",
+        databaseURL: "https://lendme360.firebaseio.com",
+        projectId: "lendme360",
+        storageBucket: "lendme360.appspot.com",
+        messagingSenderId: "1097345151286",
+        appId: "1:1097345151286:web:2247592c3c16721114c397"
+    };
+
+    if (!firebase.apps.length)
+        firebase.initializeApp(firebaseConfig)
+
+    var db = firebase.firestore();
+    var auth = firebase.auth();
+    var storage = firebase.storage();
+
+    function handleLogin() {
+        const btnLogin = document.getElementById("loginBtn")
+        var email = $('#inputEmail').val()
+        var password = $('#inputPassword').val()
+        btnLogin.disabled = true
+        auth.signInWithEmailAndPassword(email, password)
+            .then(user => {
+                auth.currentUser.getIdToken( /* forceRefresh */ true).then(idToken => {
+                    document.cookie = "idToken=" + idToken;
+                    window.location.href = "/profile";
+                }).catch(error => error);
+            })
+            .catch(err => {
+                btnLogin.disabled = false
+                alert(err)
+            })
+    }
+
+    function handleSignup() {
+        var username = $('#username').val()
+        var userEmail = $('#userEmail').val()
+        var password = $('#userPassword').val()
+        var repeatPassword = $('#repeatPassword').val()
+        if (username && userEmail && password && repeatPassword) {
+            if (password !== repeatPassword) {
+                window.alert("Password did  not match");
+                return
+            }
+            auth.createUserWithEmailAndPassword(userEmail, password)
+                .then(() => {
+            const userObj = {
+                    displayName: username,
+                    email: userEmail,
+                    premiumUser: false,
+                    userAddress : " ",
+                    userContact : " ",
+                    userGender : "Not Specified",
+                    userCity : " ",
+                    userCountry : " ",
+                    userAbout : " ",
+                    photoURL: "https://i.ibb.co/LzX5R1k/profile.png",
+                    provider : 'local authentication',
+                    reports: []
+                }
+                    var user = firebase.auth().currentUser;
+                    console.log("Current USER => " + JSON.stringify(user))
+                    db.collection('users').doc(user.uid).set(userObj)
+                    //window.location.href = "/profile";
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        } else {
+            window.alert("Please enter valid input values")
+        }
+    }
 
 
-function toggleResetPswd(e){
-    e.preventDefault();
-    $('#logreg-forms .form-signin').toggle() // display:block or none
-    $('#logreg-forms .form-reset').toggle() // display:block or none
-}
-
-function toggleSignUp(e){
-    e.preventDefault();
-    $('#logreg-forms .form-signin').toggle(); // display:block or none
-    $('#logreg-forms .form-signup').toggle(); // display:block or none
-}
-
-$(()=>{
-    // Login Register Form
-    $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
-    $('#logreg-forms #cancel_reset').click(toggleResetPswd);
-    $('#logreg-forms #btn-signup').click(toggleSignUp);
-    $('#logreg-forms #cancel_signup').click(toggleSignUp);
-})
-
-var firebaseConfig = {
-    apiKey: "AIzaSyD5Oy9j8olWHZ5CfGISn4XSswsMLiQdISg",
-    authDomain: "lendme360.firebaseapp.com",
-    databaseURL: "https://lendme360.firebaseio.com",
-    projectId: "lendme360",
-    storageBucket: "lendme360.appspot.com",
-    messagingSenderId: "1097345151286",
-    appId: "1:1097345151286:web:2247592c3c16721114c397"
-  };
-  
-  if (!firebase.apps.length)
-    firebase.initializeApp(firebaseConfig)
-
-  var db = firebase.firestore();
-  var auth = firebase.auth();
-  var storage = firebase.storage();
-  
-  function handleLogin() {
-      console.log('Calling Login user ')
-    var email = $('#inputEmail').val()
-    var password = $('#inputPassword').val()
-    
-    auth.signInWithEmailAndPassword(email, password)
-    .then(user => {
-       auth.currentUser.getIdToken(/* forceRefresh */ true).then(idToken => {
-            document.cookie = "idToken=" + idToken;
+    function handleGoogleSignIn() {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        //provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+        provider.addScope("https://www.googleapis.com/auth/userinfo.profile")
+        firebase.auth().signInWithPopup(provider).then(function (result) {
+            
+            const userObj = {
+                displayName: result.user.displayName,
+                email: result.user.email,
+                premiumUser: false,
+                userAddress : " ",
+                userContact : " ",
+                userGender : "Not Specified",
+                userCity : " ",
+                userCountry : " ",
+                userAbout : " ",
+                photoURL: result.user.photoURL,
+                provider : 'google',
+                reports: []
+            }
+            db.collection('users').doc(result.user.uid).set(userObj)
             window.location.href = "/profile";
-}).catch(error => {
-  // Handle error
-});
-    })
-    .catch(err => {
-        console.log('Login ERROR => ' + err)
-    })
-}
+        }).catch(function (error) {
+             alert(error.message)
+        });
 
-function handleSignup() {
-  var username = $('#username').val()
-    var userEmail = $('#userEmail').val()
-    var password = $('#userPassword').val()
-    var repeatPassword = $('#repeatPassword').val()
-    if(username && userEmail && password && repeatPassword) {
-        if(password !== repeatPassword) {window.alert("Password did  not match"); return}
-    auth.createUserWithEmailAndPassword(userEmail, password)
-    .then(() => {
-        var user = firebase.auth().currentUser;
-        db.collection('users').doc(user.uid).set({
-          Name : username,
-          email : user.email,
-          premiumUser : false,
-          photoURL : "https://firebasestorage.googleapis.com/v0/b/lendme360.appspot.com/o/Assets%2Fprofile.png?alt=media&token=aafabf2d-deed-4021-af8d-11a8f2c7d210",
-          reports : []
+    }
+
+    function handleFacebookSignIn() {
+        var provider = new firebase.auth.FacebookAuthProvider();
+        provider.setCustomParameters({
+            'display': 'popup'
         })
-        window.location.href = "/profile";
-    })
-    .catch(err => {
-        console.log(err)
-    })
-} else {
-    window.alert("Please enter valid input values")
-}
-}
-
-
-function handleGoogleSignIn() {
-    var provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-    firebase.auth().signInWithPopup(provider).then(function(result) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = result.credential.accessToken;
-        var user = result.user;
-        window.location.href = "/profile";
-      }).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-      });
-}
-function handleFacebookSignIn() {
-    var form = document.getElementById('logreg-forms')
-    // form.innerHTML = `<div class="spinner-grow" role="status"><span class="sr-only">Loading...</span></div>`
-    
-    var provider = new firebase.auth.FacebookAuthProvider();
-    provider.setCustomParameters({
-        'display': 'popup'
-      })
-    firebase.auth().signInWithPopup(provider).then(function(result) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = result.credential.accessToken;
-        var user = result.user;
-        console.log(user)
-        window.location.href = "/profile";
-        // ...
-      }).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
-      });
-}
-
+        firebase.auth().signInWithPopup(provider).then(function (result) {
+            var token = result.credential.accessToken;
+            console.log("FACEBOOK => " + JSON.stringify(result.user))
+        const userObj = {
+                displayName: result.user.displayName,
+                email: result.user.email,
+                premiumUser: false,
+                userAddress : " ",
+                userContact : " ",
+                userGender : "Not Specified",
+                userCity : " ",
+                userCountry : " ",
+                userAbout : " ",
+                photoURL: result.user.photoURL,
+                provider : 'facebook',
+                reports: []
+            }
+            db.collection('users').doc(result.user.uid).set(userObj)
+             window.location.href = "/profile";
+        }).catch(function (error) {
+             alert( error.message + " " + error.email)
+            })
+    }
 </script>
 <style>
     .loading {
-        width:  300px;
+        width: 300px;
         height: 300px;
         border: 3px solid #000;
         border-radius: 50%;
     }
 </style>
+
 </html>

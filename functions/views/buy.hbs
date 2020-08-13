@@ -35,14 +35,14 @@
               />
             </div>
           </div>
-          <div class="quantity-setter">
+          <div style="display: none;" class="quantity-setter">
             <button class="increment-btn" id="subtract" disabled>
               -
             </button>
             <input type="number" id="quantity-input" min="1" value="1" />
             <button class="increment-btn" id="add">+</button>
           </div>
-          <p class="sr-legal-text" data-i18n="sr-legal-text"></p>
+          <p style="display: none;" class="sr-legal-text" data-i18n="sr-legal-text"></p>
 
           <button
             id="submit"
@@ -90,6 +90,7 @@ var updateQuantity = function (evt) {
       ? currentQuantity + 1
       : currentQuantity - 1
     : currentQuantity;
+   // {{!-- https://github.com/dev-mohib/Lendme360.git --}}
   // Update number input with new value.
   inputEl.value = quantity;
   // Calculate the total amount and format it with currency symbol.
@@ -150,7 +151,7 @@ var createCheckoutSession = function () {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      quantity: quantity,
+      quantity: 1,
       locale: i18next.language.toLowerCase().split('-')[0],
     }),
   }).then(function (result) {

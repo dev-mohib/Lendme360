@@ -26,14 +26,14 @@
         <!-- Sidebar Holder -->
         <nav id="sidebar">
             <div class="sidebar-header">
-               <img id="photoURL" src="img/profile.png" alt="Avatar" class="avatar">
+                <img id="photoURL" src="img/profile.png" alt="Avatar" class="avatar">
             </div>
             <ul class="list-unstyled components">
                 <p id="displayName">{{user.email}}</p>
-                <li class="active">
-                    <a href="#homeSubmenu">Dashboard</a>
-                </li>
                 <li>
+                    <a href="/profile">Dashboard</a>
+                </li>
+                <li class="active">
                     <a href="/view-reports">View Reports</a>
                 </li>
                 <li>
@@ -53,7 +53,9 @@
                 </li>
             </ul>
             <div class="user-plan">
-                <div><h5>Current Plan</h5><b>Free</b></div>
+                <div>
+                    <h5>Current Plan</h5><b>Free</b>
+                </div>
                 <button onclick="upgradePlan()" class="btn-plan">Upgrade</button>
             </div>
         </nav>
@@ -83,7 +85,8 @@
                         <ul class="navbar-nav navbar-right mr-auto ml-auto nav-flex-icons">
                             <li class="nav-item">
                                 <div class="dropdown">
-                                    <a class="btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
                                         <i class="fa fa-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -99,76 +102,97 @@
             </nav>
             {{!-- Body of the html page --}}
             <!-- Masthead -->
-            <div class="jumbotron text-center hoverable p-4">
-                <div class="row">
-                    <div style="align-self: center;" class="col-md-7 text-md-left ml-3 mt-3">
-
-                        <h1 class="h1 mb-4">Welcome!</h1>
-
-                        <p class="font-weight-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Vestibulum sem dolor, egestas in porttitor non, ullamcorper eu eros. Suspendisse id quam
-                            nisi. Nulla sit amet. </p>
-                        {{!-- <p class="font-weight-normal">by <a><strong>Delroy Pearson</strong></a></p> --}}
-
-                        <a style="color: #fafafa;" class="btn btn-primary btn-lg read-more">Generate Report</a>
-
-                    </div>
-                    <div class="col-md-4 offset-md-1 mx-3 my-3">
-                        <!-- Featured image -->
-                        <div class="view overlay">
-                            <img src="img/jumbotron.png" class="img-fluid"
-                                alt="Sample image for first version of blog listing">
-                            <a>
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
-                        </div>
-
-                    </div>
-                    <!-- Grid column -->
-                </div>
-                <!-- Grid row -->
-
+            <h1 class="h1" style="margin: 20px;">Available Reports <a href="" data-toggle="tooltip" title="The file with red pdf means this file is available. You need to purchase the other reports"><i style="font-size: 18px;color : #6d7fcc" class="fa fa-info-circle"></i></a></h1>
+            <div class="col-md-10 mb-4">
+                <ul id="userReports" class="list-group pt-5">
+                    {{!-- <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div> <i class="fa fa-file-pdf fa-2x mr-5"></i>Cras justo odio </div>
+                        <button type="button" class="btn btn-flat">Buy</button>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div> <i style="color: red;" class="fa fa-file-pdf fa-2x mr-5"></i>Cras justo odio </div>
+                        <button type="button" style="color: darkgreen;" class="btn btn-flat">View</button>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div> <i class="fa fa-file-pdf fa-2x mr-5"></i>Cras justo odio </div>
+                        <button type="button" class="btn btn-flat">Buy</button>
+                    </li> --}}
+                </ul>
             </div>
-        <div>
-    </div>
-</body>       
- <!-- Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
-        <script type="text/javascript">
-                var firebaseConfig = {
-                    apiKey: "AIzaSyD5Oy9j8olWHZ5CfGISn4XSswsMLiQdISg",
-                    authDomain: "lendme360.firebaseapp.com",
-                    databaseURL: "https://lendme360.firebaseio.com",
-                    projectId: "lendme360",
-                    storageBucket: "lendme360.appspot.com",
-                    messagingSenderId: "1097345151286",
-                    appId: "1:1097345151286:web:2247592c3c16721114c397"
-                };
-function getElement(id) {
-    return document.getElementById(id)
-}
-                if (!firebase.apps.length)
-                    firebase.initializeApp(firebaseConfig)
 
-                var db = firebase.firestore();
-                var auth = firebase.auth();
-                var storage = firebase.storage();
-                auth.onAuthStateChanged(user => {
-                    if(!user) window.location.href = "/";
-                    else laodPage(user.uid)
-                })
 
-const laodPage = async (uid) => {
- const cityRef = db.collection('users').doc(uid)
+
+            <div>
+            </div>
+</body>
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+</script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
+<script type="text/javascript">
+    var firebaseConfig = {
+        apiKey: "AIzaSyD5Oy9j8olWHZ5CfGISn4XSswsMLiQdISg",
+        authDomain: "lendme360.firebaseapp.com",
+        databaseURL: "https://lendme360.firebaseio.com",
+        projectId: "lendme360",
+        storageBucket: "lendme360.appspot.com",
+        messagingSenderId: "1097345151286",
+        appId: "1:1097345151286:web:2247592c3c16721114c397"
+    };
+
+    function getElement(id) {
+        return document.getElementById(id)
+    }
+    if (!firebase.apps.length)
+        firebase.initializeApp(firebaseConfig)
+
+    var db = firebase.firestore();
+    var auth = firebase.auth();
+    var storage = firebase.storage();
+    auth.onAuthStateChanged(user => {
+        if (!user) window.location.href = "/";
+        else laodPage(user.uid)
+    })
+
+    const laodPage = async (uid) => {
+        const cityRef = db.collection('users').doc(uid)
         const doc = await cityRef.get()
         const userData = doc.data()
-        console.log('Document data:', userData)
+        const reports = userData.reports
+        //console.log('Document data:', reports)
+
+        const userReports = getElement('userReports')
+        let dom = ``
+        if(!reports.length)
+        {
+            dom = `<h4>No Reports found. Please create a new report <a style="color:blue" href='/reports/generate'>here</a>.`
+        } else {
+            reports.map(report => {
+            if(report.purchased)
+            {
+            dom += `<li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div> <i class="fa fa-file-pdf fa-2x mr-5"></i>${report.uploadDate} </div>
+                        <button type="button" onclick="viewReport(${report.id})" class="btn btn-success btn-flat">View</button>
+                    </li>`
+            } else {
+                 dom += `<li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div> <i class="fa fa-file-pdf fa-2x mr-5"></i>${report.uploadDate} </div>
+                        <button type="button" onclick="buyReport(${report.id})" class="btn btn-flat">Buy</button>
+                    </li>`
+            }
+        })
+        }
+        userReports.innerHTML = dom
 
         const displayName = getElement('displayName')
         const photoURL = getElement('photoURL')
@@ -176,19 +200,32 @@ const laodPage = async (uid) => {
         displayName.innerHTML = userData.displayName
         photoURL.src = userData.photoURL
 
-mainBody.style.display = "block"
-}
+        mainBody.style.display = "block"
+    }
+
     function handleLogout() {
-               auth.signOut()
-               .then(() => {
-                   console.log('Logout seccessfully')
-                    window.location.href = "/";
-               })
-            }
-const upgradePlan = () =>{
+        auth.signOut()
+            .then(() => {
+                console.log('Logout seccessfully')
+                window.location.href = "/";
+            })
+    }
+    const upgradePlan = () => {
+        window.location.href = "/buy";
+    }
+
+const viewReport = (id) => {
+    console.log("I will View The report")
+} 
+const buyReport = (id) => {
     window.location.href = "/buy";
-}
-        </script>
+} 
+//script for tooltip
+// Tooltips Initialization
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
 <style>
     .navbar {
         padding: 10px;
@@ -220,7 +257,8 @@ const upgradePlan = () =>{
         color: #000;
         margin-top: 0px;
     }
-    .dropdown-menu .dropdown-item:hover{
+
+    .dropdown-menu .dropdown-item:hover {
         cursor: pointer;
     }
 
@@ -273,12 +311,14 @@ const upgradePlan = () =>{
         justify-content: center !important;
         align-items: center !important;
     }
+
     .user-plan {
         display: flex;
         justify-content: space-between;
         align-content: center;
         margin: 8px;
     }
+
     .btn-plan {
         padding: 15px 10px;
         font-weight: bold;
@@ -289,28 +329,41 @@ const upgradePlan = () =>{
         border-radius: 10px;
         background-color: #6778be;
     }
-    .btn-plan:hover{
+
+    .btn-plan:hover {
         background-color: #3b477c;
     }
- .loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  animation: spin 2s linear infinite;
-}
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-#loader {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    margin-top: 350px;
-}
+    .loader {
+        border: 16px solid #f3f3f3;
+        /* Light grey */
+        border-top: 16px solid #3498db;
+        /* Blue */
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    #loader {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        margin-top: 350px;
+    }
 </style>
+<script>
 
+
+</script>
 </html>

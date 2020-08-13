@@ -30,7 +30,7 @@
             </div>
             <ul class="list-unstyled components">
                 <p id="displayName">{{user.email}}</p>
-                <li class="active">
+                <li>
                     <a href="#homeSubmenu">Dashboard</a>
                 </li>
                 <li>
@@ -39,8 +39,8 @@
                 <li>
                     <a href="/reports/generate">Generate Report</a>
                 </li>
-                <li>
-                    <a href="edit-profile">Edit Profile</a>
+                <li  class="active">
+                    <a href="#">Edit Profile</a>
                 </li>
                 <li>
                     <a href="/about">About </a>
@@ -99,36 +99,82 @@
             </nav>
             {{!-- Body of the html page --}}
             <!-- Masthead -->
-            <div class="jumbotron text-center hoverable p-4">
-                <div class="row">
-                    <div style="align-self: center;" class="col-md-7 text-md-left ml-3 mt-3">
 
-                        <h1 class="h1 mb-4">Welcome!</h1>
+<div class="container-fluid">
+		<div class="container">
+			<div class="formBox">
+				<form>
+						<div class="row">
+							<div class="col-sm-12">
+								<h1>Edit Profile</h1>
+							</div>
+						</div>
 
-                        <p class="font-weight-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Vestibulum sem dolor, egestas in porttitor non, ullamcorper eu eros. Suspendisse id quam
-                            nisi. Nulla sit amet. </p>
-                        {{!-- <p class="font-weight-normal">by <a><strong>Delroy Pearson</strong></a></p> --}}
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="inputBox focus">
+									<div class="inputText">Edit Name</div>
+									<input type="text" id="userDisplayName" name="" class="input">
+								</div>
+							</div>
 
-                        <a style="color: #fafafa;" class="btn btn-primary btn-lg read-more">Generate Report</a>
+							<div class="col-sm-6">
+								<div class="inputBox focus">
+									<div class="inputText">Contact</div>
+									<input type="text" name="" id="userContact" class="input">
+								</div>
+							</div>
+						</div>
 
-                    </div>
-                    <div class="col-md-4 offset-md-1 mx-3 my-3">
-                        <!-- Featured image -->
-                        <div class="view overlay">
-                            <img src="img/jumbotron.png" class="img-fluid"
-                                alt="Sample image for first version of blog listing">
-                            <a>
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
-                        </div>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="inputBox focus">
+									<div class="inputText">City</div>
+									<input type="text" id="userCity" name="" class="input">
+								</div>
+							</div>
 
-                    </div>
-                    <!-- Grid column -->
-                </div>
-                <!-- Grid row -->
+							<div class="col-sm-6">
+								<div class="inputBox focus">
+									<div class="inputText">Address</div>
+									<input type="text" name="" id="userAddress" class="input">
+								</div>
+							</div>
+						</div>
 
-            </div>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="inputBox focus">
+									<div class="inputText">About</div>
+									<textarea class="input" id="userAbout"></textarea>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-12">
+								<input type="button" onclick="updateProfile()" id="btnUpdate" name="" class="button" value="Save Changes">
+							</div>
+						</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- END --}}
         <div>
     </div>
 </body>       
@@ -149,10 +195,12 @@
                     storageBucket: "lendme360.appspot.com",
                     messagingSenderId: "1097345151286",
                     appId: "1:1097345151286:web:2247592c3c16721114c397"
-                };
+                }
+let userUID;
 function getElement(id) {
     return document.getElementById(id)
 }
+
                 if (!firebase.apps.length)
                     firebase.initializeApp(firebaseConfig)
 
@@ -160,23 +208,62 @@ function getElement(id) {
                 var auth = firebase.auth();
                 var storage = firebase.storage();
                 auth.onAuthStateChanged(user => {
-                    if(!user) window.location.href = "/";
+                     userUID = user.uid
+                    if(!user) window.location.href = "/"
                     else laodPage(user.uid)
                 })
-
+    //Element Refs
+    //const photoURL = getElement('photoURL')
+    //const displayName = getElement('displayName')
+    //const mainBody = getElement('mainBody')
+    //const userDisplayName = getElement('userDisplayName')
+    const userAbout = getElement('userAbout')
+    const userCity = getElement('userCity')
+    const userContact = getElement('userContact')
+    const userAddress = getElement('userAddress')
+    const userDisplayName = getElement('userDisplayName')
 const laodPage = async (uid) => {
- const cityRef = db.collection('users').doc(uid)
-        const doc = await cityRef.get()
-        const userData = doc.data()
-        console.log('Document data:', userData)
-
         const displayName = getElement('displayName')
         const photoURL = getElement('photoURL')
         const mainBody = getElement('mainBody')
+        
+
+        const cityRef = db.collection('users').doc(uid)
+        const doc = await cityRef.get()
+        const userData = doc.data()
+
+        console.log('Document data:', userData)
+
         displayName.innerHTML = userData.displayName
         photoURL.src = userData.photoURL
+        userDisplayName.value = userData.displayName
+        userCity.value= userData.userCity
+        userAddress.value= userData.userAddress
+        userContact.value= userData.userContact
+        userAbout.value = userData.userAbout
 
 mainBody.style.display = "block"
+}
+const updateProfile = () => {
+    const btnUpdate = getElement('btnUpdate')
+    btnUpdate.disabled = true
+    const userObj = {
+                displayName: userDisplayName.value,
+                userAddress : userAddress.value,
+                userContact : userContact.value,
+                userCity :userCity.value,
+                userAbout :userAbout.value,
+            }
+    db.collection("users").doc(userUID).update(userObj)
+    .then(() => {
+        console.log("User dat have updated")
+        alert("User dat have updated")
+    })
+    .catch(err => {
+        console.log(err)
+        alert(err)
+    })
+    btnUpdate.disabled = false
 }
     function handleLogout() {
                auth.signOut()
@@ -188,7 +275,7 @@ mainBody.style.display = "block"
 const upgradePlan = () =>{
     window.location.href = "/buy";
 }
-        </script>
+</script>
 <style>
     .navbar {
         padding: 10px;
@@ -313,4 +400,60 @@ const upgradePlan = () =>{
 }
 </style>
 
+<style>
+.formBox{
+	margin-top: 90px;
+	padding: 50px;
+}
+.formBox  h1{
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	margin-bottom: 50px;
+	text-transform: uppercase;
+	font-size: 48px;
+}
+.inputBox{
+	position: relative;
+	box-sizing: border-box;
+	margin-bottom: 50px;
+}
+.inputBox .inputText{
+	position: absolute;
+    font-size: 24px;
+    line-height: 50px;
+    transition: .5s;
+    opacity: .5;
+}
+.inputBox .input{
+	position: relative;
+	width: 100%;
+	height: 50px;
+	background: transparent;
+	border: none;
+    outline: none;
+    font-size: 24px;
+    border-bottom: 1px solid rgba(0,0,0,.5);
+
+}
+.focus .inputText{
+	transform: translateY(-30px);
+	font-size: 18px;
+	opacity: 1;
+	color: #00bcd4;
+
+}
+textarea{
+	height: 100px !important;
+}
+.button{
+	width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    background: #03A9F4;
+    color: #fff;
+    cursor: pointer;
+}
+</style>
 </html>
