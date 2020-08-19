@@ -2,10 +2,15 @@ const functions = require('firebase-functions');
 const express = require('express')
 const engines = require('consolidate')
 const cookieParser = require('cookie-parser')
-const admin = require('firebase-admin')
-admin.initializeApp()
+const {Storage} = require('@google-cloud/storage');
+var admin = require('firebase-admin')
+admin.initializeApp({
+  credential: admin.credential.applicationDefault(),
+  databaseURL: 'https://lendme360.firebaseio.com',
+  storageBucket: "lendme360.appspot.com",
+})
 const env = {
-  DOMAIN : "https://lendme360.web.app", //"http://localhost:5000",
+  DOMAIN : "http://localhost:5000", //"http://localhost:5000", //https://lendme360.web.app
   PAYMENT_METHODS : "card",
   PRICE : "price_1HDSASGjRUMSznxqLjk6ppSx",
   STRIPE_PUBLISHABLE_KEY : "pk_test_51HCiNYGjRUMSznxq6yy0k9tjJX1q0M0X8uEbXmZwxlmLLJaUyJZUUx0M0uilfkDpMGrhH2JgljS6xtE2aFpX6aHW00TFkVtYPv",
@@ -13,7 +18,12 @@ const env = {
   STRIPE_WEBHOOK_SECRET : "whsec_BI9pqVkN74mgbvgbGzxKKvZjE8RFbmtr"
 }
 const stripe = require('stripe')(env.STRIPE_SECRET_KEY);
-const db = admin.firestore()
+
+const storage = new Storage({
+  keyFilename: 'AAAA_37eMTY:APA91bE7AxUrJHXL_Zq88vcLiRXd72zZit21max3V5EpO5-YCzR17ZqyyD3ji7YIFtM4HmNspUyZITYsgD5B103SPdUEVvEwuQqsE03nwvXJMT8Fxjj0jqYOPI3fjTU3VQ9FhH3CQV7I',
+});
+
+ //const db = admin.firestore()
 const app = express()
 app.engine('hbs', engines.handlebars)
 app.set('views', './views')
@@ -33,7 +43,7 @@ app.use(
 );
 
 app.get('/', (req, res) => {
-  res.render('index', {name : 'some-name'})
+res.render('index', {name : 'temp'})
 })
 app.get('/login', (req, res) => {
   res.render('login', {pageData : 'some-data'})
@@ -74,7 +84,20 @@ app.get('/edit-profile', async (req, res) => {
   res.render('edit-profile', { pageData : "some data"})
 })
 
+app.get('/get-report', async (req, res) => {
+  res.render('get-report')
+})
 
+app.post('/get-reportRef', async (req, res) => {
+  console.log("called")
+  const ref = `user-reports/${req.body.uid}/${req.body.id}`
+  res.send(ref)
+})
+
+app.get('/check-availability/:report_id', async (req, res) => {
+  const id = req.params.report_id
+  res.send({purchased : true})
+})
 
 app.get('/buy', async (req, res) => {
   res.render('buy', {example : "Some Example"});
@@ -100,7 +123,7 @@ app.get('/checkout-session', async (req, res) => {
 app.post('/create-checkout-session', async (req, res) => {
   const domainURL = env.DOMAIN;
 
-  const { quantity, locale } = req.body;
+  const { quantity, locale, client_reference_id } = req.body;
   // Create new Checkout Session for the order
   // Other optional params include:
   // [billing_address_collection] - to display billing address details on the page
@@ -111,11 +134,12 @@ app.post('/create-checkout-session', async (req, res) => {
     payment_method_types: env.PAYMENT_METHODS.split(', '),
     mode: 'payment',
     locale: locale,
+    client_reference_id : client_reference_id,
     line_items: [
       {
         price: env.PRICE,
-        quantity: quantity
-      },
+        quantity: 1
+      }
     ],
     // ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
     success_url: `${domainURL}/success?session_id={CHECKOUT_SESSION_ID}`,
@@ -127,7 +151,8 @@ app.post('/create-checkout-session', async (req, res) => {
 });
 
 // Webhook handler for asynchronous events.
-app.post('/webhook', async (req, res) => {
+app.post('/hooks', async (req, res) => {
+  console.log("Web Hook Called")
   let data;
   let eventType;
   // Check if webhook signing is configured.
@@ -158,12 +183,15 @@ app.post('/webhook', async (req, res) => {
 
   if (eventType === 'checkout.session.completed') {
     console.log(`🔔  Payment received!`);
+    updateReport(data.object.client_reference_id)
   }
 
   res.sendStatus(200);
+  return true
 });
 
 app.get('/success', (req, res) => {
+  console.log("User paid successfully")
   res.render('payment-success')
 })
 app.get('/canceled', (req, res) => {
@@ -172,24 +200,6 @@ app.get('/canceled', (req, res) => {
 
 
 
-//Getting user from server side
-const getUserFromCookie = async (req) => {
-  const rawCookies = req.headers.cookie.split('; ');
-  // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
-  const parsedCookies = {};
-  rawCookies.forEach(rawCookie=>{
-  const parsedCookie = rawCookie.split('=');
-   parsedCookies[parsedCookie[0]] = parsedCookie[1];
-  })
-  try {
-    const decodedToken = await admin.auth().verifyIdToken(parsedCookies.idToken);
-    return { isFound : true, user : decodedToken }
-  } catch (err) {
-    console.log(err);
-    return { isFound : false}
-  }
- }
-
  app.get('/config', async (req, res) => {
   const price = await stripe.prices.retrieve(env.PRICE);
   res.send({
@@ -197,6 +207,11 @@ const getUserFromCookie = async (req) => {
     unitAmount: 2000,
     currency: 'usd',
   })
-});
+})
+
+
+const updateReport = (report_id) => {
+  console.log("Updating Report " + report_id)
+} 
 
 exports.app = functions.https.onRequest(app)

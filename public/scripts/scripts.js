@@ -7,7 +7,11 @@ var firebaseConfig = {
     messagingSenderId: "1097345151286",
     appId: "1:1097345151286:web:2247592c3c16721114c397"
   };
-  
+  if(location.hostname === 'localhost') {
+    firebaseConfig = {
+      databaseURL : 'http://localhost:4000?ns=emulatorui'
+    }
+  }
   firebase.initializeApp(firebaseConfig);
   
   var myLoan360 = firebase.database();

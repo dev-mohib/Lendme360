@@ -182,7 +182,7 @@
             {
             dom += `<li class="list-group-item d-flex justify-content-between align-items-center">
                         <div> <i class="fa fa-file-pdf fa-2x mr-5"></i>${report.uploadDate} </div>
-                        <button type="button" onclick="viewReport(${report.id})" class="btn btn-success btn-flat">View</button>
+                        <a target="_blank" href="/get-report/${report.id}" class="btn btn-success btn-flat">View</button>
                     </li>`
             } else {
                  dom += `<li class="list-group-item d-flex justify-content-between align-items-center">
@@ -213,12 +213,9 @@
     const upgradePlan = () => {
         window.location.href = "/buy";
     }
-
-const viewReport = (id) => {
-    console.log("I will View The report")
-} 
+ 
 const buyReport = (id) => {
-    window.location.href = "/buy";
+    window.location.href = "/buy?report_id="+id;
 } 
 //script for tooltip
 // Tooltips Initialization

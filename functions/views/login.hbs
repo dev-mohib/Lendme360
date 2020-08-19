@@ -111,10 +111,9 @@
         storageBucket: "lendme360.appspot.com",
         messagingSenderId: "1097345151286",
         appId: "1:1097345151286:web:2247592c3c16721114c397"
-    };
-
-    if (!firebase.apps.length)
-        firebase.initializeApp(firebaseConfig)
+    }
+if (!firebase.apps.length)
+    firebase.initializeApp(firebaseConfig)
 
     var db = firebase.firestore();
     var auth = firebase.auth();
@@ -149,10 +148,11 @@
                 return
             }
             auth.createUserWithEmailAndPassword(userEmail, password)
-                .then(() => {
+                .then((creds) => {
+                    
             const userObj = {
                     displayName: username,
-                    email: userEmail,
+                    email: creds.user.email,
                     premiumUser: false,
                     userAddress : " ",
                     userContact : " ",
@@ -164,13 +164,12 @@
                     provider : 'local authentication',
                     reports: []
                 }
-                    var user = firebase.auth().currentUser;
-                    console.log("Current USER => " + JSON.stringify(user))
-                    db.collection('users').doc(user.uid).set(userObj)
-                    //window.location.href = "/profile";
+                   
+                    db.collection('users').doc(creds.user.uid).set(userObj)
+                    window.location.href = "/profile";
                 })
                 .catch(err => {
-                    console.log(err)
+                    alert(err.message)
                 })
         } else {
             window.alert("Please enter valid input values")

@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <div id="mainBody"  class="wrapper" style="display: none;">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
             <div class="sidebar-header">
@@ -54,7 +54,7 @@
                 <li>
                     <a href="#">Career</a>
                 </li>
-                 <li>
+                <li>
                     <a href="#">Contact</a>
                 </li>
             </ul>
@@ -106,41 +106,45 @@
                                 <a href="/login" class="btn-login">LOGIN</a>
                             </li>
                             <li class="nav-item">
-                               <i class="fas fa-search fa-lg"></i>
+                                <i class="fas fa-search fa-lg"></i>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
             {{!-- Body of the html page --}}
-    <!-- Masthead -->
-<div class="jumbotron text-center hoverable p-4">
-  <div class="row">
-    <div style="align-self: center;" class="col-md-7 text-md-left ml-3 mt-3">
-      
-      <h1 class="h1 mb-4">LOWEST RATE MORTGAGE</h1>
+            <!-- Masthead -->
+            <div class="jumbotron text-center hoverable p-4">
+                <div class="row">
+                    <div style="align-self: center;" class="col-md-7 text-md-left ml-3 mt-3">
 
-      <p class="font-weight-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sem dolor, egestas in porttitor non, ullamcorper eu eros. Suspendisse id quam nisi. Nulla sit amet. </p>
-      {{!-- <p class="font-weight-normal">by <a><strong>Delroy Pearson</strong></a></p> --}}
+                        <h1 class="h1 mb-4">LOWEST RATE MORTGAGE</h1>
+                        
 
-      <a style="color: #fafafa;" class="btn btn-primary btn-lg read-more">Read more</a>
+                        <p class="font-weight-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Vestibulum sem dolor, egestas in porttitor non, ullamcorper eu eros. Suspendisse id quam
+                            nisi. Nulla sit amet. </p>
+                        {{!-- <p class="font-weight-normal">by <a><strong>Delroy Pearson</strong></a></p> --}}
 
-    </div>
-    <div class="col-md-4 offset-md-1 mx-3 my-3">
-      <!-- Featured image -->
-      <div class="view overlay">
-        <img src="img/jumbotron.png" class="img-fluid" alt="Sample image for first version of blog listing">
-        <a>
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
+                        <a style="color: #fafafa;" class="btn btn-primary btn-lg read-more">Read more</a>
 
-    </div>
-    <!-- Grid column -->
-  </div>
-  <!-- Grid row -->
+                    </div>
+                    <div class="col-md-4 offset-md-1 mx-3 my-3">
+                        <!-- Featured image -->
+                        <div class="view overlay">
+                            <img src="img/jumbotron.png" class="img-fluid"
+                                alt="Sample image for first version of blog listing">
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
 
-</div>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+
+            </div>
         </div>
 
         <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -151,13 +155,34 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
             integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
         </script>
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
         <!-- Bootstrap JS -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
             integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
         </script>
 
         <script type="text/javascript">
+            var firebaseConfig = {
+                apiKey: "AIzaSyD5Oy9j8olWHZ5CfGISn4XSswsMLiQdISg",
+                authDomain: "lendme360.firebaseapp.com",
+                databaseURL: "https://lendme360.firebaseio.com",
+                projectId: "lendme360",
+                storageBucket: "lendme360.appspot.com",
+                messagingSenderId: "1097345151286",
+                appId: "1:1097345151286:web:2247592c3c16721114c397"
+            }
+            if (!firebase.apps.length)
+                firebase.initializeApp(firebaseConfig)
             $(document).ready(function () {
+                firebase.auth().onAuthStateChanged(user => {
+                    if(user)
+                   window.location.href = "/profile"; 
+                   else 
+                   document.getElementById('mainBody').style.display = "block"
+                })
                 $('#sidebarCollapse').on('click', function () {
                     $('#sidebar').toggleClass('active');
                     $(this).toggleClass('active');
@@ -186,18 +211,21 @@
         margin-top: 10px !important;
 
     }
-  .btn-login:hover {
-      background-color: rgba(0, 0, 0, 0.6);
-      color:  #fafafa;
-  }
+
+    .btn-login:hover {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fafafa;
+    }
 
     .search-icon {
         color: #000;
         margin-top: 0px;
     }
-.read-more {
-    padding: 10px 35px 10px 35px !important;
-}
+
+    .read-more {
+        padding: 10px 35px 10px 35px !important;
+    }
+
     .nav-items {
         margin: auto;
         width: 50%;
@@ -212,9 +240,11 @@
         color: #000 !important;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
-.nav-items li a:hover{
-    background-color: rgba(167, 165, 165, 0.6);
-}
+
+    .nav-items li a:hover {
+        background-color: rgba(167, 165, 165, 0.6);
+    }
+
     .navbar-brand {
         margin-left: 30px;
         color: black;
@@ -227,7 +257,7 @@
         padding-left: 15px !important;
         padding-right: 15px !important;
         display: flex !important;
-        justify-content :baseline !important;
+        justify-content: baseline !important;
     }
 
     .jumbotron {

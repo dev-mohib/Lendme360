@@ -149,7 +149,10 @@
                     storageBucket: "lendme360.appspot.com",
                     messagingSenderId: "1097345151286",
                     appId: "1:1097345151286:web:2247592c3c16721114c397"
-                };
+                }
+if (!firebase.apps.length)
+    firebase.initializeApp(firebaseConfig)
+
 function getElement(id) {
     return document.getElementById(id)
 }
